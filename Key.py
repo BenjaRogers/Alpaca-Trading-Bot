@@ -5,8 +5,8 @@ import datetime as dt
 # Initialize API and account objects with key, secret key and paper account URL.
 ######################################################################################
 
-key = "PKIUVBXXIYXDREPILOQY"
-sec = "tZAgFZjMk0fFMrZUQy923hqou7HNrHgSD4KgLMEa"
+key = "KEY"
+sec = "SECRET_KEY"
 url = "https://paper-api.alpaca.markets"
 
 api = tradeapi.REST(key, sec, url, api_version='v2')
