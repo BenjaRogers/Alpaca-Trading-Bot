@@ -22,15 +22,15 @@ def create_buy_order(api, symbol, time_in_force, order_class, cash):
     limit_price_profit = price * 1.1  # set target profit to 10 %
     stop_price = price * 0.96  # set stop loss to 4%
     limit_price_loss = price * 0.95
-    qty = buy_amount(symbol, 200)
-
+    qty = buy_amount(symbol, 600)
+    total_cost_position = limit_buy_price * qty
     print(f"Symbol: {symbol} \n"
           f"Last Quote: {price} \n"
           f"Take Profit Limit: {limit_price_profit} \n"
           f"Stop Loss: {stop_price} \n"
           f"Stop Limit: {limit_price_loss} \n"
           f"Quantity: {qty}")
-    if limit_buy_price * qty >= cash:
+    if cash - total_cost_position >= 25000:
         api.submit_order(side='buy',
                          symbol=symbol,
                          type='limit',
