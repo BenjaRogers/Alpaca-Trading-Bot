@@ -21,10 +21,12 @@ def main():
         for symbol in buy_order_list:
             # Determine how big of a position to take.
             # Submit buy order with bracket order_class -
+            liquid_cash = account.cash
             create_buy_order(api=api,
                             symbol=symbol,
                             time_in_force='day',
-                            order_class='bracket')
+                            order_class='bracket',
+                            cash=liquid_cash)
 
         # Check portfolio for positions where the current price has crossed below the short term ema
         sell_order_list = create_sell_list(api, owned_position_list)

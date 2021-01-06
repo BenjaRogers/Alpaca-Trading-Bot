@@ -12,6 +12,4 @@ url = "https://paper-api.alpaca.markets"
 api = tradeapi.REST(key, sec, url, api_version='v2')
 account = api.get_account()
 orders = api.list_orders()
-for order in orders:
-    if order.side == 'sell':
-        print(order)
+print(account.cash)
