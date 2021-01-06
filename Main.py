@@ -7,8 +7,7 @@ import time
 
 def main():
 
-    # while api.get_clock().is_open:
-    for i in range(1):
+    while api.get_clock().is_open:
         position = api.list_positions()
         owned_position_list = []
         for i in range(len(position)):
