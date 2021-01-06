@@ -36,7 +36,7 @@ def main():
                               time_in_force='day')
         time.sleep(600)
     else:
-        quit()
+        time.sleep(60)
 
 if __name__ == '__main__':
     main()
