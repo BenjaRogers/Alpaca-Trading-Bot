@@ -19,7 +19,7 @@ def loop():
     for symbol in buy_order_list:
         # Determine how big of a position to take.
         # Submit buy order with bracket order_class -
-        liquid_cash = account.cash
+        liquid_cash = float(account.cash)
         create_buy_order(api=api,
                          symbol=symbol,
                          time_in_force='day',
