@@ -42,7 +42,7 @@ def main():
             loop()
         else:
             secs_to_open = api.get_clock().next_open - api.get_clock().timestamp
-            if secs_to_open.total_seconds < 7200:
+            if secs_to_open.total_seconds() < 7200:
                 loop()
             else:
                 time.sleep(60)
