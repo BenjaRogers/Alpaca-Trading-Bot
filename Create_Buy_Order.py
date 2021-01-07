@@ -53,4 +53,4 @@ def buy_amount(stock_name, target):
             total += price
             num += 1
 
-    return str(num)
+    return float(num)
