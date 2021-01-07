@@ -15,9 +15,7 @@ def create_sell_list(api, owned_symbol_list):
     # Create a list of symbols that are already being sold and exclude them.
     existing_sell_order_list = []
     orders = api.list_orders()
-    for order in orders:
-        if order.side == 'sell':
-            existing_sell_order_list.append(order)
+
     rwb_is_false_list = []
     for symbol in owned_symbol_list:
         if symbol not in existing_sell_order_list:
