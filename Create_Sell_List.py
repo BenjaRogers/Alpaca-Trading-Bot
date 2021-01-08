@@ -25,13 +25,10 @@ def create_sell_list(api, owned_symbol_list):
                 df = pdr.get_data_yahoo(symbol, start, now)
 
                 # create new columns with ema ranges
+                df["ema_2"] = round(df.iloc[:, 4].ewm(span=2, adjust=False).mean(), 2)
 
-                df["ema_8"] = round(df.iloc[:, 5].ewm(span=8, adjust=False).mean(),2)
-                df["ema_50"] = round(df.iloc[:, 5].ewm(span=50, adjust=False).mean(),2)
+                today_short_ema = df['ema_2'][-1]
 
-                today_short_ema = df['ema_8'][-1]
-                today_long_ema = df['ema_50'][-1]
-                print(price, today_short_ema)
 
                 # This is the threshold to suggest moving into a buy position for whatever stock meets this condition
                 if price < today_short_ema:
