@@ -17,8 +17,8 @@ def loop():
     active_orders_list = []
     orders = api.list_orders()
     for order in orders:
-        if order.side == 'buy' and order.status == 'new':
-            orders.append(order.symbol)
+        if order.side == "buy" and order.status == "new":
+            active_orders_list.append(order.symbol)
 
     # Check top performers list for buys
     buy_order_list = create_buy_list("Performance_Lists/Top_Performers.txt", owned_position_list, active_orders_list)
