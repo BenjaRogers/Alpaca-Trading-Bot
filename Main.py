@@ -6,13 +6,22 @@ from Create_Sell_Order import create_sell_order
 import time
 
 def loop():
+    # Get list of stocks that are already owned.
     position = api.list_positions()
     owned_position_list = []
     for i in range(len(position)):
         pos = position[i]
         owned_position_list.append(pos.symbol)
+
+    # Get list of stocks that have been ordered but not filled.
+    active_orders_list = []
+    orders = api.list_orders()
+    for order in orders:
+        if order.side == 'buy' and order.status == 'new':
+            orders.append(order.symbol)
+
     # Check top performers list for buys
-    buy_order_list = create_buy_list("Performance_Lists/Top_Performers.txt", owned_position_list)
+    buy_order_list = create_buy_list("Performance_Lists/Top_Performers.txt", owned_position_list, active_orders_list)
     print("The following is a list of stocks that have recently crossed over: \n ", buy_order_list)
 
     # For each stock in buy_order_list create/submit a buy order to alpaca api

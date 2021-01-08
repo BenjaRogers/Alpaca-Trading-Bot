@@ -10,5 +10,6 @@ sec = "tZAgFZjMk0fFMrZUQy923hqou7HNrHgSD4KgLMEa"
 url = "https://paper-api.alpaca.markets"
 
 api = tradeapi.REST(key, sec, url, api_version='v2')
-account = api.get_account()
-
+account = api.get_account().cash
+orders = api.list_orders()
+print(orders)

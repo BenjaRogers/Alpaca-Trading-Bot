@@ -11,7 +11,7 @@ ema_long = 50
 now = dt.datetime.now()
 start = dt.datetime(now.year - 1, now.month + 9, now.day)
 
-def create_buy_list(file, owned_symbol_list):
+def create_buy_list(file, owned_symbol_list, active_order_list):
 
     file = open(file, 'r')
     string = file.read()
@@ -22,7 +22,7 @@ def create_buy_list(file, owned_symbol_list):
     count = 0
     for symbol in stock_list:
 
-        if symbol not in owned_symbol_list:
+        if symbol not in owned_symbol_list and symbol not in active_order_list:
 
             try:
                 print(f"{count}/{len_list}")
